@@ -10,7 +10,6 @@
 
 # Ignore npm/yarn debug logs
 npm-debug.log
-yarn-error.log
 
 # Ignore build/output directories
 .next/
