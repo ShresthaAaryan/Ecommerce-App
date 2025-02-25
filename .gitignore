@@ -2,21 +2,20 @@
 **/node_modules/
 
 # Ignore environment variables
-.env
-.env.local
-.env.development
-.env.production
-.env.test
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.test
 
 # Ignore npm/yarn debug logs
-npm-debug.log
-yarn-error.log
+**/npm-debug.log
 
 # Ignore build/output directories
-.next/
-dist/
-build/
-out/
+**/.next/
+**/dist/
+**/build/
+**/out/
 
 # Ignore cache directories
 .cache/
