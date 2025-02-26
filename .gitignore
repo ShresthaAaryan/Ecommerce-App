@@ -42,4 +42,5 @@ logs/
 
 # Ignore MongoDB data files (if applicable)
 data/db/
+
 z
