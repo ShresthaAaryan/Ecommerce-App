@@ -1,7 +1,7 @@
 const express = require("express")
 const dotenv = require("dotenv")
 const mongoose = require('mongoose');
-const userRoutes = require("./routes/userRoutes")
+const productRoutes = require("./routes/productRoutes")
 
 dotenv.config()
 
@@ -9,7 +9,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/api/users', userRoutes);
+app.use('/api/product', productRoutes);
 
 const connectToMongoDB = async () =>{
     try {
@@ -22,7 +22,7 @@ const connectToMongoDB = async () =>{
       }
 }
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3002
 
 const startServer = async () =>{
     await connectToMongoDB()

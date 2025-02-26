@@ -1,10 +1,8 @@
 const express = require("express")
+const gatewayRoutes = require("./routes/gatewayRoutes")
+const config = require("./config/config")
 const dotenv = require("dotenv")
-const gatewayRoutes = require("./src/routes/gatewayRoutes")
-const config = require("./src/config/config")
-
 dotenv.config()
-
 const app = express()
 
 app.use(express.json())
