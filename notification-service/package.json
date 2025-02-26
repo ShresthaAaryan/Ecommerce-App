@@ -1,5 +1,5 @@
 {
-  "name": "cart-service",
+  "name": "notification-service",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,6 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.10.2",
-    "redis": "^4.7.0"
+    "nodemailer": "^6.10.0"
   }
 }
