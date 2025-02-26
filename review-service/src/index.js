@@ -1,16 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const userRoutes = require("./routes/userRoutes");
-
+const reviewRoutes = require("./routes/reviewRoutes");
 dotenv.config();
-
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/api/users', userRoutes);
+app.use("/reviews", reviewRoutes);
 
 const connectToMongoDB = async () =>{
     try {
@@ -23,14 +21,14 @@ const connectToMongoDB = async () =>{
     }
 }
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3007;
 
-const startServer = async () => {
-    await connectToMongoDB();
+const startServer = async () =>{
+    await connectToMongoDB()
 
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-};
+    app.listen(PORT, ()=>{
+        console.log(`Server is running on port ${PORT}`)
+    })
+}
 
-startServer();
+startServer()
