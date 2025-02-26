@@ -1,5 +1,5 @@
 const Stripe = require("stripe");
-const stripe = Stripe(process.env.STRIPE_URL); // Initialize Stripe
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY); // Initialize Stripe
 const Payment = require("../models/Payment"); // Import the Payment model
 
 const processPayment = async (req, res) => {
