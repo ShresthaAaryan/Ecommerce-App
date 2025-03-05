@@ -5,12 +5,12 @@ const Product = require("../../../product-service/src/models/Product");
 const reviewSchema = new mongoose.Schema({
   productId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
+    ref: "Product", // Refers to the Product model
     required: true,
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "User", // Refers to the User model
     required: true,
   },
   rating: {

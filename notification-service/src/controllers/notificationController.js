@@ -12,12 +12,13 @@ const sendEmailNotification = async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to,
+      from: process.env.EMAIL_USER, 
+      to,    
       subject,
       text,
     });
-    console.log("Email sent successfull");
+    console.log("Email sent successfully");
+    res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
     console.error("Error sending notification:", error);
     res.status(500).json({ message: "Failed to send notification" });

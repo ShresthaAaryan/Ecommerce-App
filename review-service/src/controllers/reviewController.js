@@ -4,11 +4,13 @@ const createReview = async (req, res) => {
   const { productId, userId, rating, comment } = req.body;
 
   try {
+    
     if (!productId || !userId || !rating) {
       return res
         .status(400)
         .json({ message: "Product ID, User ID, and Rating are required" });
     }
+
     const review = new Review({
       productId,
       userId,

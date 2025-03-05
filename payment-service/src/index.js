@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/payments", paymentRoutes);
+app.use("/api/payments", paymentRoutes);
 
 const connectToMongoDB = async () => {
     try {
