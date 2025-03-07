@@ -2,13 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const reviewRoutes = require("./routes/reviewRoutes");
+const cors = require("cors");
+
 
 dotenv.config();
 
 const app = express();
 
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
-
 app.use("/api/reviews", reviewRoutes);
 
 const connectToMongoDB = async () => {

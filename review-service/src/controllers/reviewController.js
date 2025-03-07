@@ -1,10 +1,10 @@
+const mongoose = require("mongoose"); // Make sure this line is at the very top
 const Review = require("../models/Review");
 
 const createReview = async (req, res) => {
   const { productId, userId, rating, comment } = req.body;
 
   try {
-    
     if (!productId || !userId || !rating) {
       return res
         .status(400)
@@ -29,15 +29,15 @@ const createReview = async (req, res) => {
 
 const getReviewsForProduct = async (req, res) => {
   const { productId } = req.params;
-
   try {
+    // Let Mongoose cast the productId string to ObjectId automatically.
     const reviews = await Review.find({ productId });
-
     res.status(200).json({ reviews });
   } catch (error) {
     console.error("Error fetching reviews:", error.message);
     res.status(500).json({ message: "Server Error" });
   }
 };
+
 
 module.exports = { createReview, getReviewsForProduct };

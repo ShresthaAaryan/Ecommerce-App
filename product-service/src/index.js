@@ -1,35 +1,36 @@
-const express = require("express")
-const dotenv = require("dotenv")
-const mongoose = require('mongoose');
-const productRoutes = require("./routes/productRoutes")
+const express = require("express");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const productRoutes = require("./routes/productRoutes");
+const cors = require("cors");
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
+app.use(express.json());
+app.use('/api', productRoutes);
 
-app.use('/api/products', productRoutes);
+const connectToMongoDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1);
+  }
+};
 
-const connectToMongoDB = async () =>{
-    try {
-        await mongoose.connect(process.env.MONGODB_URI) 
-        console.log('Connected to MongoDB')
-    }
-    catch (error) {
-        console.error('Error connecting to MongoDB:', error.message);
-        process.exit(1);
-    }
-}
+const PORT = process.env.PORT || 3002;
 
-const PORT = process.env.PORT || 3002
+const startServer = async () => {
+  await connectToMongoDB();
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+};
 
-const startServer = async () =>{
-    await connectToMongoDB()
-
-    app.listen(PORT, ()=>{
-        console.log(`Server is running on port ${PORT}`)
-    })
-}
-
-startServer()
+startServer();
