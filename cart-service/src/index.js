@@ -2,14 +2,12 @@ const express = require("express");
 const dotenv = require("dotenv");
 const redis = require("redis");
 const cartRoutes = require("./routes/cartRoutes");
-
+const cors = require("cors")
 dotenv.config();
 
 const app = express();
-
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
-
-// Mount the cart routes at "/api/cart"
 app.use("/api/cart", cartRoutes);
 
 // Create a Redis client using the URL from your .env file

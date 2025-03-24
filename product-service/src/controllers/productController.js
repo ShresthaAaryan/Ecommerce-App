@@ -2,11 +2,11 @@ const Product = require("../models/Product");
 
 const createProduct = async (req, res) => {
   try {
-    const { name, price, description, imageData } = req.body;
+    const { name, price, gender, description, imageData } = req.body;
     if (!name || !price) {
       return res.status(400).json({ message: "Name and price are required" });
     }
-    const newProduct = new Product({ name, price, description, imageData });
+    const newProduct = new Product({ name, price, gender, description, imageData });
     await newProduct.save();
     res.status(201).json({ message: "Product created successfully", product: newProduct });
   } catch (error) {
@@ -43,11 +43,10 @@ const getProductById = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   try {
-    // Destructure imageData along with other fields from req.body
-    const { name, price, description, imageData } = req.body;
+    const { name, price, gender, description, imageData } = req.body;
     const product = await Product.findByIdAndUpdate(
       req.params.id,
-      { name, price, description, imageData },
+      { name, price, gender, description, imageData },
       { new: true }
     );
     if (!product) {

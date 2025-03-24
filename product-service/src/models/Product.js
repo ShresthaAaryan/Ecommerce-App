@@ -11,6 +11,10 @@ const productSchema = new mongoose.Schema({
     required: [true, "Product price is required"],
     min: [0, "Product price cannot be negative"],
   },
+  gender:{
+    type: String,
+    enum: ["Male", "Female", "Unisex"],
+  },
   description: {
     type: String,
     required: true,
