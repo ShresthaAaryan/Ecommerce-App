@@ -1,23 +1,24 @@
 export interface Product {
-    gender: ReactNode;
-    imageData: string;
-    photos: boolean;
-    _id: string;
-    name: string;
-    price: number;
-    description: string;
-    createdAt: string;
-    image?: string;
-  }
-  
-  export interface Review {
-    _id: string;
-    productId: string;
-    userId: string;
-    rating: number;
-    comment: string;
-    createdAt: string;
-    user?: {
-      username: string;
-    };
-  }
+  gender: string;
+  imageData: string;
+  photos: boolean;
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  createdAt: string;
+  image?: string;
+  category?: string;
+}
+
+export interface Review {
+  _id: string;
+  productId: string;
+  userId: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+  user?: {
+    username: string;
+  };
+}
